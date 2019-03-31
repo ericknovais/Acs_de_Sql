@@ -1,0 +1,49 @@
+CREATE DATABASE Mercearia
+GO
+
+USE Mercearia
+GO
+
+CREATE TABLE Fornecedor (
+ID INT NOT NULL IDENTITY(1,1)
+, Nome VARCHAR(50) NOT NULL
+, CONSTRAINT PK_Fornecedor PRIMARY KEY ( ID )
+)
+GO
+
+CREATE TABLE Produto (
+ID INT NOT NULL IDENTITY(1,1)
+, Nome VARCHAR(50) NOT NULL
+, ID_FornecedorPadrao INT NOT NULL
+, CONSTRAINT PK_Produto PRIMARY KEY ( ID )
+, CONSTRAINT FK_ProdutoFornecedorPadrao FOREIGN KEY ( Id_FornecedorPadrao ) REFERENCES Fornecedor( ID )
+)
+GO
+
+CREATE TABLE Compra (
+NF VARCHAR(15) NOT NULL
+, DiasEntrega INT NOT NULL
+, Valor FLOAT NOT NULL
+, Data DATE NOT NULL
+, CONSTRAINT PK_Compra PRIMARY KEY ( NF )
+)
+GO
+
+CREATE TABLE ItemCompra (
+ID_Produto INT NOT NULL
+, ID_Fornecedor INT NOT NULL
+, NF_Compra VARCHAR(15) NOT NULL
+, QTDE INT NOT NULL
+, CONSTRAINT PK_ItemCompra PRIMARY KEY ( ID_Produto, ID_Fornecedor, NF_Compra )
+, CONSTRAINT FK_ItemCompraProduto FOREIGN KEY ( ID_produto ) REFERENCES PRODUTO ( ID )
+, CONSTRAINT FK_ItemCompraFornecedor FOREIGN KEY ( ID_fornecedor) REFERENCES Fornecedor ( ID )
+, CONSTRAINT FK_ItemCompraCompra FOREIGN KEY ( NF_Compra ) REFERENCES Compra ( NF )
+)
+GO
+
+
+ALTER TABLE ItemCompra ADD ValorCompra DECIMAL(6,2) NOT NULL
+ALTER TABLE Compra DROP COLUMN Valor
+ALTER TABLE Compra ADD ValorTotal DECIMAL(6,2) NOT NULL
+ALTER TABLE Compra ADD CONSTRAINT dfData DEFAULT(GETDATE()) for Data
+ALTER TABLE Produto ALTER COLUMN ID_FornecedorPadrao INT NULL

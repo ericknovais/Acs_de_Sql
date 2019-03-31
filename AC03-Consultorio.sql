@@ -1,0 +1,49 @@
+Create database Consultorio
+GO 
+
+Use Consultorio
+GO
+
+CREATE TABLE Paciente (
+ID INT NOT NULL IDENTITY(1,1)
+,Nome VARCHAR(50) NOT NULL
+,Telefone INT NULL
+,CONSTRAINT PK_Paciente PRIMARY KEY ( ID )
+)
+GO
+
+CREATE TABLE Sala (
+Numero INT NOT NULL 
+,CONSTRAINT PK_Sala PRIMARY KEY ( Numero )
+)
+GO
+
+CREATE TABLE Medico (
+ID INT NOT NULL IDENTITY(1,1)
+,CRM VARCHAR(10) NOT NULL
+,Nome VARCHAR(50) NOT NULL
+,Especialidade VARCHAR(30) NULL
+,CONSTRAINT PK_Medico PRIMARY KEY ( ID )
+)
+GO
+
+
+CREATE TABLE Consulta (
+ID INT NOT NULL IDENTITY(1,1)
+,ID_Paciente INT NOT NULL
+,ID_Medico INT NOT NULL
+,Numero_Sala INT NOT NULL
+,DataHora DATETIME NOT NULL
+,Duracao TINYINT NOT NULL
+,CONSTRAINT PK_Consulta PRIMARY KEY ( ID )
+,CONSTRAINT FK_ConsultaMedico FOREIGN KEY ( Id_medico ) REFERENCES Medico( ID )
+,CONSTRAINT FK_ConsultaPaciente FOREIGN KEY ( Id_paciente ) REFERENCES paciente( ID )
+,CONSTRAINT FK_ConsultaSala FOREIGN KEY ( Numero_Sala ) REFERENCES Sala( Numero )
+)
+GO
+
+ALTER TABLE Consulta DROP CONSTRAINT PK_Consulta
+ALTER TABLE Consulta ADD  CONSTRAINT PK_NumeroSala_DataHora PRIMARY KEY CLUSTERED (Numero_Sala,DataHora) 
+ALTER TABLE Consulta ADD CONSTRAINT ck_Duracao CHECK(Duracao in ('15','30','45','60'))
+ALTER TABLE Consulta ADD  TipoSala VARCHAR(40)  
+ALTER TABLE Consulta ADD  CONSTRAINT dfDuracao DEFAULT(30) FOR Duracao
