@@ -1,17 +1,37 @@
 
-CREATE DATABASE bd_lms
-
-DROP TABLE bd_lms
+--CREATE DATABASE bd_lms
+--GO
+--DROP DATABASE bd_lms
 
 USE bd_lms
+GO
 
+--CREATE--
+--Usuario--
 CREATE TABLE Usuario(
 ID INT NOT NULL,
 Login INT NOT NULL,
 Senha VARCHAR(20) NOT NULL,
 DtExpiracao DATE NOT NULL
 )
+GO
 
+-- ALTER --
+-- Usuario
+ALTER TABLE Usuario
+ADD CONSTRAINT PK_User PRIMARY KEY (ID)
+GO
+
+ALTER TABLE Usuario
+ADD CONSTRAINT UK_Login UNIQUE (Login)
+GO
+
+ALTER TABLE Usuario
+ADD CONSTRAINT DF_DtExpiracao DEFAULT CONVERT(DATETIME, '01/01/1900', 103) FOR DtExpiracao
+GO
+
+--CREATE-- 
+--Coordenador--
 CREATE TABLE Coordenador(
 ID INT NOT NULL,
 Id_usuario INT NOT NULL,
@@ -19,7 +39,28 @@ Nome VARCHAR(150) NOT NULL,
 Email VARCHAR(60) NOT NULL,
 Celular INT NOT NULL
 )
+GO
 
+--ALTER--
+-- Coordenador--
+ALTER TABLE Coordenador
+ADD CONSTRAINT PK_Coordenador PRIMARY KEY (ID)
+GO
+
+ALTER TABLE Coordenador
+ADD CONSTRAINT FK_Id_usuarioCoordnador FOREIGN KEY (Id_usuario) REFERENCES Usuario(ID)
+GO
+
+ALTER TABLE Coordenador
+ADD CONSTRAINT UK_Email UNIQUE (Email)
+GO
+
+ALTER TABLE Coordenador
+ADD CONSTRAINT UK_Celular UNIQUE (Celular)
+GO
+
+--CREATE--
+--Aluno--
 CREATE TABLE Aluno(
 ID INT NOT NULL,
 Id_usuario INT NOT NULL,
@@ -29,7 +70,28 @@ Celular INT NOT NULL,
 RA INT NOT NULL,
 Foto VARCHAR(300) NULL,
 )
+GO
 
+--ALTER--
+-- Aluno-- 
+ALTER TABLE Aluno
+ADD CONSTRAINT PK_Aluno PRIMARY KEY (ID)
+GO
+
+ALTER TABLE Aluno
+ADD CONSTRAINT FK_Id_usuarioAluno FOREIGN KEY (Id_usuario) REFERENCES Usuario(ID)
+GO
+
+ALTER TABLE Aluno
+ADD CONSTRAINT UK_Email UNIQUE (Email) -- Voltar aqui
+GO
+
+ALTER TABLE Aluno
+ADD CONSTRAINT UK_Celular UNIQUE (Celular) --Voltar aqui
+GO
+
+--CREATE--
+--Professor--
 CREATE TABLE Professor(
 ID INT NOT NULL,
 Id_usuario INT NOT NULL,
@@ -37,7 +99,26 @@ Email VARCHAR(60) NOT NULL,
 Celular INT NOT NULL,
 Apelido VARCHAR(50) NOT NULL
 )
+GO
+-- Professor 
+ALTER TABLE Professor
+ADD CONSTRAINT PK_Professor PRIMARY KEY (ID)
+GO
 
+ALTER TABLE Professor
+ADD CONSTRAINT FK_Id_usuarioProfessor FOREIGN KEY (Id_usuario) REFERENCES Usuario(ID)
+GO
+
+ALTER TABLE Professor
+ADD CONSTRAINT UK_Email UNIQUE (Email) --Voltar aqui
+GO
+
+ALTER TABLE Professor
+ADD CONSTRAINT UK_Celular UNIQUE (Celular) --Voltar aqui
+GO
+
+--CREATE--
+--Disciplina--
 CREATE TABLE Disciplina(
 ID INT NOT NULL,
 Nome VARCHAR(80) NOT NULL,
@@ -55,53 +136,11 @@ PercentualPratico TINYINT NOT NULL,
 PercentualTeorico TINYINT NOT NULL,
 IdCoordenador INT
 )
+GO
 
--- ALTER --
--- Usuario
-ALTER TABLE Usuario
-ADD CONSTRAINT PK_User PRIMARY KEY (ID)
 
-ALTER TABLE Usuario
-ADD CONSTRAINT UK_Login UNIQUE (Login)
 
-ALTER TABLE Usuario
-ADD CONSTRAINT DF_DtExpiracao DEFAULT CONVERT(DATETIME, '01/01/1900', 103) FOR DtExpiracao
 
--- Coordenador
-ALTER TABLE Coordenador
-ADD CONSTRAINT PK_Coordenador PRIMARY KEY (ID)
 
-ALTER TABLE Coordenador
-ADD CONSTRAINT FK_Id_usuarioCoordnador FOREIGN KEY (Id_usuario) REFERENCES Usuario(ID)
 
-ALTER TABLE Coordenador
-ADD CONSTRAINT UK_Email UNIQUE (Email)
 
-ALTER TABLE Coordenador
-ADD CONSTRAINT UK_Celular UNIQUE (Celular)
-
--- Aluno 
-ALTER TABLE Aluno
-ADD CONSTRAINT PK_Aluno PRIMARY KEY (ID)
-
-ALTER TABLE Aluno
-ADD CONSTRAINT FK_Id_usuarioAluno FOREIGN KEY (Id_usuario) REFERENCES Usuario(ID)
-
-ALTER TABLE Aluno
-ADD CONSTRAINT UK_Email UNIQUE (Email)
-
-ALTER TABLE Aluno
-ADD CONSTRAINT UK_Celular UNIQUE (Celular)
-
--- Professor 
-ALTER TABLE Professor
-ADD CONSTRAINT PK_Professor PRIMARY KEY (ID)
-
-ALTER TABLE Professor
-ADD CONSTRAINT FK_Id_usuarioProfessor FOREIGN KEY (Id_usuario) REFERENCES Usuario(ID)
-
-ALTER TABLE Professor
-ADD CONSTRAINT UK_Email UNIQUE (Email)
-
-ALTER TABLE Professor
-ADD CONSTRAINT UK_Celular UNIQUE (Celular)
