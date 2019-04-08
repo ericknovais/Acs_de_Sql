@@ -204,3 +204,23 @@ GO
 --ALTER--
 --DisciplinaOfertada--
 
+
+
+--Create--
+--Curso--
+CREATE TABLE Curso
+(
+ID INT IDENTITY(1,1) NOT NULL
+,Nome VARCHAR(60) NOT NULL
+)
+GO
+
+--Alter--
+--Curso--
+ALTER TABLE Curso
+ADD CONSTRAINT PK_Curso PRIMARY KEY(ID)
+GO
+
+ALTER TABLE Curso
+ADD CONSTRAINT UQ_NomeCurso UNIQUE(Nome)
+GO 
