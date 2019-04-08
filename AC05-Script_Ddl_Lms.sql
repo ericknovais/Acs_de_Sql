@@ -138,7 +138,7 @@ BibliografiaBasica VARCHAR(300) NOT NULL, -- COLOQUEI VARCHAR PARTINDO DO PRÉ-SU
 BibliografiaComplementar VARCHAR(300) NOT NULL, -- COLOQUEI VARCHAR PARTINDO DO PRÉ-SUPOSTO DE QUE ESTE CAMPO VAI SER PREENCHIDO POR UMA URL APONTADA PARA ALGUM ARQUIVO DOCX OU PDF
 PercentualPratico TINYINT NOT NULL,
 PercentualTeorico TINYINT NOT NULL,
-IdCoordenador INT
+IdCoordenador INT NOT NULL
 )
 GO
 
@@ -181,5 +181,26 @@ ALTER TABLE Disciplina
 ADD CONSTRAINT FK_Coordenador_Disciplina FOREIGN KEY(IdCoordenador) REFERENCES Coordenador(ID)
 GO 
 
+--Create Disciplina Ofertada--
+CREATE TABLE DisciplinaOFertada
+(
+ID INT IDENTITY(1, 1) NOT NULL
+,IdCoordenador INT
+,DtInicialMatricula DATE NULL --Aceita valor null como entrada e pode ser alterado depois 
+,DtFimMatricula DATE NULL
+,IdDisciplina INT NOT NULL
+,IdCurso INT NOT NULL
+,Ano INT NOT NULL
+,Semestre CHAR(1) NOT NULL -- Tipo de dado char(1) porque só vai acaitar os valor 1 ou 2
+,Turma CHAR(1) NOT NULL 
+,IdProfessor INT NULL	    --Aceita NULL
+,Metodologia VARCHAR(100) NULL --Aceita NULL 
+,Recursos VARCHAR(100) NULL --Aceita NULL
+,CriterioAvaliacao VARCHAR(100) --Aceita NULL
+,PlanoDeAulas VARCHAR(100) --Aceita NULL
+)
+GO
 
+--ALTER--
+--DisciplinaOfertada--
 
