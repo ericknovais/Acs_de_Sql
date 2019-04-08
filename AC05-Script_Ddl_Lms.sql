@@ -1,11 +1,11 @@
 
---CREATE DATABASE bd_lms
+--CREATE DATABASE LMS_DB
 --GO
 
--- USE MASTER
---DROP DATABASE bd_lms
+--USE MASTER
+--DROP DATABASE LMS_DB
 
-USE bd_lms
+USE LMS_DB
 GO
 
 --CREATE--
@@ -152,8 +152,34 @@ ALTER TABLE Disciplina
 ADD CONSTRAINT UQ_NomeDisciplina UNIQUE(Nome)
 GO
 
+ALTER TABLE Disciplina 
+ADD CONSTRAINT DF_DataDisciplina DEFAULT(GETDATE()) FOR Data
+GO
+
+ALTER TABLE Disciplina
+ADD CONSTRAINT CK_StatusDisciplina CHECK(Status in('Aberta','Fechada'))
+GO 
 
 
+ALTER TABLE Disciplina
+ADD CONSTRAINT DF_StatusDisciplina DEFAULT('Aberta') FOR STATUS
+GO 
+
+ALTER TABLE Disciplina
+ADD CONSTRAINT  CK_CargaHorariaDisciplina CHECK(CargaHoraria in(40, 80)) 
+GO  
+
+ALTER TABLE Disciplina
+ADD CONSTRAINT  CK_PercentualPraticoDisciplina CHECK(PercentualPratico in(00, 100)) 
+GO  
+
+ALTER TABLE Disciplina
+ADD CONSTRAINT  CK_PercentualTeoricoDisciplina CHECK(PercentualTeorico in(00, 100)) 
+GO 
+
+ALTER TABLE Disciplina
+ADD CONSTRAINT FK_Coordenador_Disciplina FOREIGN KEY(IdCoordenador) REFERENCES Coordenador(ID)
+GO 
 
 
 
