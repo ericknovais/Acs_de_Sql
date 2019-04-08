@@ -254,3 +254,52 @@ ALTER TABLE DisciplinaOfertada
 ADD CONSTRAINT FK_Professor_DisciplinaOfertada FOREIGN KEY(IdProfessor) REFERENCES Professor(ID)
 GO
 
+--Create--
+--SolicitacaoMatricula--
+
+CREATE TABLE SolicitacaoMatricula
+(
+ID INT IDENTITY(1,1) NOT NULL
+,IdAluno INT NOT NULL
+,IdDisciplinaOfertada INT NOT NULL
+,DtSolicitacao DATE NULL
+,IdCoordenador INT NULL 
+,Status varchar(10) NULL  
+)
+GO 
+
+--Alter--
+--SolicitacaoMatricula--
+
+ALTER TABLE SolicitacaoMatricula
+ADD CONSTRAINT PK_SolicitacaoMatricula PRIMARY KEY(ID)
+GO
+
+ALTER TABLE SolicitacaoMatricula
+ADD CONSTRAINT FK_Aluno_SolicitacaoMatricula FOREIGN KEY(IdAluno) REFERENCES Aluno(ID)
+GO
+
+ALTER TABLE SolicitacaoMatricula
+ADD CONSTRAINT FK_DisciplinaOfertada_SolicitacaoMatricula foreign key(IdDisciplinaOfertada)
+REFERENCES DisciplinaOfertada(ID)
+GO  
+
+ALTER TABLE SolicitacaoMatricula
+ADD CONSTRAINT DF_DtSolicitacao_SolicitacaoMatricula DEFAULT(GETDATE()) FOR DtSolicitacao
+GO
+
+ALTER TABLE SolicitacaoMatricula
+ADD CONSTRAINT FK_Coordenador_SolicitacaoMatricula FOREIGN KEY(IdCoordenador) 
+REFERENCES Coordenador(ID)
+GO
+
+ALTER TABLE SolicitacaoMatricula
+ADD CONSTRAINT DF_Status_SolicitacaoMatricula DEFAULT('Solicidata') FOR Status
+GO 
+
+ALTER TABLE SolicitacaoMatricula
+ADD CONSTRAINT CK_Status_SolicitacaoMatricula CHECK(Status in('Solicitada','Aprovada'))
+GO
+
+
+ 
