@@ -341,13 +341,13 @@ CREATE TABLE AtividadeVinculada
 ID INT IDENTITY(1,1) NOT NULL
 ,IdAtividade INT NOT NULL
 ,IdProfessor INT NOT NULL
-,IdDisciplinaOfertadaRotulo INT NOT NULL
+,IdDisciplinaOfertada INT NOT NULL
+,Rotulo VARCHAR(5) NOT NULL
 ,Status VARCHAR(15) NOT NULL
 ,DtInicioRespostas DATE NOT NULL
 ,DtFimRespostas DATE NOT NULL   
 )
 GO
-
 
 --Alter--
 --AtividadeVinculada--
@@ -366,6 +366,6 @@ REFERENCES Professor(ID)
 GO
 
 ALTER TABLE AtividadeVinculada
-ADD CONSTRAINT FK_DisciplinaOfertadaRotulo_AtividadeVinculada FOREIGN KEY(IdDisciplinaOfertadaRotulo)
+ADD CONSTRAINT FK_DisciplinaOfertada_AtividadeVinculada FOREIGN KEY(IdDisciplinaOfertada)
 REFERENCES DisciplinaOfertada(ID)
 GO
