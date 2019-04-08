@@ -369,3 +369,67 @@ ALTER TABLE AtividadeVinculada
 ADD CONSTRAINT FK_DisciplinaOfertada_AtividadeVinculada FOREIGN KEY(IdDisciplinaOfertada)
 REFERENCES DisciplinaOfertada(ID)
 GO
+
+--Create--
+--Entrega--
+CREATE TABLE Entrega
+(
+ID INT IDENTITY(1,1) NOT NULL
+,IdAluno INT NOT NULL
+,IdAtividadeVinculada INT NOT NULL
+,Titulo VARCHAR(100) NOT  NULL
+,Resposta VARCHAR(150) NOT NULL
+,DtEntrega DATETIME NOT NULL
+,Status VARCHAR(10) NOT NULL
+,IdProfessor INT NULL
+,Nota DECIMAL(4,2) NULL
+,DtAvaliacao DATE NULL
+,Obs VARCHAR(200) NULL
+)
+GO
+
+--Alter--
+--Entrega--
+ALTER TABLE Entrega 
+ADD CONSTRAINT PK_Entrega PRIMARY KEY(ID)
+GO
+
+ALTER TABLE Entrega
+ADD CONSTRAINT FK_Aluno_Entrega FOREIGN KEY(IdAluno) 
+REFERENCES Aluno(ID)
+GO
+
+ALTER TABLE Entrega
+ADD CONSTRAINT FK_AtividadeVinculada_Entrega FOREIGN KEY(IdAtividadeVinculada)
+REFERENCES AtividadeVinculada(ID)
+GO
+
+ALTER TABLE Entrega
+ADD CONSTRAINT DF_DtEntrega_Entrega DEFAULT(GETDATE()) FOR DtEntrega
+GO
+
+ALTER TABLE Entrega
+ADD CONSTRAINT CK_Status_Entrega CHECK(Status in ('Entregue', 'Corrigido'))
+GO
+
+ALTER TABLE Entrega
+ADD CONSTRAINT DF_Status_Entrega DEFAULT('Entregue') FOR Status
+GO
+
+ALTER TABLE Entrega
+ADD CONSTRAINT FK_Professor_Entrega FOREIGN KEY(IdProfessor)
+REFERENCES Professor(ID)
+GO
+
+ALTER TABLE Entrega
+ADD CONSTRAINT CK_Note_Entrega CHECK(Nota in(0.00, 10.00))
+GO
+
+
+
+
+
+
+--ALTER TABLE Entrega
+--ADD CONSTRAINT DF_DtEnvio DEFAULT(GETDATE()) FOR DtEnvio
+--GO
