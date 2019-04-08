@@ -334,4 +334,14 @@ ADD CONSTRAINT FK_Professor_Atividade FOREIGN KEY(IdProfessor)
 REFERENCES Professor(ID)
 GO
 
- 
+--Create--
+--AtividadeVinculada--
+CREATE TABLE AtividadeVinculada
+(
+ID INT IDENTITY(1,1) NOT NULL
+,IdAtividade INT NOT NULL
+,IdProfessor INT NOT NULL
+,IdDisciplinaOfertada INT NOT NULL
+,Rotulo VARCHAR(    
+)
+GO
