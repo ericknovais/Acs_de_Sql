@@ -181,6 +181,25 @@ ALTER TABLE Disciplina
 ADD CONSTRAINT FK_Coordenador_Disciplina FOREIGN KEY(IdCoordenador) REFERENCES Coordenador(ID)
 GO 
 
+--Create--
+--Curso--
+CREATE TABLE Curso
+(
+ID INT IDENTITY(1,1) NOT NULL
+,Nome VARCHAR(60) NOT NULL
+)
+GO
+
+--Alter--
+--Curso--
+ALTER TABLE Curso
+ADD CONSTRAINT PK_Curso PRIMARY KEY(ID)
+GO
+
+ALTER TABLE Curso
+ADD CONSTRAINT UQ_NomeCurso UNIQUE(Nome)
+GO 
+
 --Create Disciplina Ofertada--
 CREATE TABLE DisciplinaOFertada
 (
@@ -203,24 +222,35 @@ GO
 
 --ALTER--
 --DisciplinaOfertada--
-
-
-
---Create--
---Curso--
-CREATE TABLE Curso
-(
-ID INT IDENTITY(1,1) NOT NULL
-,Nome VARCHAR(60) NOT NULL
-)
-GO
-
---Alter--
---Curso--
-ALTER TABLE Curso
-ADD CONSTRAINT PK_Curso PRIMARY KEY(ID)
-GO
-
-ALTER TABLE Curso
-ADD CONSTRAINT UQ_NomeCurso UNIQUE(Nome)
+ALTER TABLE DisciplinaOfertada
+ADD CONSTRAINT PK_DisciplinaOfertada PRIMARY KEY(ID)
 GO 
+
+ALTER TABLE DisciplinaOfertada
+ADD CONSTRAINT FK_Coordenador_DisciplinaOfertada FOREIGN KEY(IdCoordenador) REFERENCES Coordenador(ID)
+GO 
+
+ALTER TABLE DisciplinaOfertada
+ADD CONSTRAINT FK_Disciplina_DisciplinaOfertada FOREIGN KEY(IdDisciplina) REFERENCES Disciplina(ID)
+GO
+
+ALTER TABLE DisciplinaOfertada
+ADD CONSTRAINT FK_Curso_DisciplinaOfertada FOREIGN KEY(IdCurso) REFERENCES Curso(ID)
+GO
+
+ALTER TABLE DisciplinaOfertada
+ADD CONSTRAINT CK_Ano_DisciplinaOfertada CHECK(Ano > 1900 AND Ano < 2100) -- Ano só aceita valor maior que 1900 e menor que 2100
+GO
+
+ALTER TABLE DisciplinaOfertada
+ADD CONSTRAINT CK_Semestre_DisciplinaOfertada CHECK(Semestre in('1','2')) --Esse campo só aceita o valor 1 ou 2 
+GO
+
+ALTER TABLE DisciplinaOfertada
+ADD CONSTRAINT CK_Turma_DisciplinaOfertada CHECK(Turma like'[A-Z]') 
+GO
+
+ALTER TABLE DisciplinaOfertada
+ADD CONSTRAINT FK_Professor_DisciplinaOfertada FOREIGN KEY(IdProfessor) REFERENCES Professor(ID)
+GO
+
