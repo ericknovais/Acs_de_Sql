@@ -25,7 +25,7 @@ ADD CONSTRAINT PK_User PRIMARY KEY (ID)
 GO
 
 ALTER TABLE Usuario
-ADD CONSTRAINT UK_Login UNIQUE (Login)
+ADD CONSTRAINT UQ_Login UNIQUE (Login)
 GO
 
 ALTER TABLE Usuario
@@ -50,16 +50,16 @@ ADD CONSTRAINT PK_Coordenador PRIMARY KEY (ID)
 GO
 
 ALTER TABLE Coordenador
-ADD CONSTRAINT FK_Id_usuarioCoordnador FOREIGN KEY (Id_usuario) REFERENCES Usuario(ID)
-GO
+ADD CONSTRAINT FK_Id_UsuarioCoordnador FOREIGN KEY (Id_usuario) REFERENCES Usuario(ID)
+GO 
 
 ALTER TABLE Coordenador
-ADD CONSTRAINT UK_Email UNIQUE (Email)
-GO
+ADD CONSTRAINT UQ_EmailCoordenador UNIQUE (Email)
+GO --UK_Email Alterado para UQ_EmailCoordenador
 
 ALTER TABLE Coordenador
-ADD CONSTRAINT UK_Celular UNIQUE (Celular)
-GO
+ADD CONSTRAINT UQ_CelularCoordenador UNIQUE (Celular)
+GO -- UK_Celulat Alterado para UQ_CelularCoordenador 
 
 --CREATE--
 --Aluno--
@@ -81,16 +81,16 @@ ADD CONSTRAINT PK_Aluno PRIMARY KEY (ID)
 GO
 
 ALTER TABLE Aluno
-ADD CONSTRAINT FK_Id_usuarioAluno FOREIGN KEY (Id_usuario) REFERENCES Usuario(ID)
+ADD CONSTRAINT FK_Id_UsuarioAluno FOREIGN KEY (Id_usuario) REFERENCES Usuario(ID)
 GO
 
 ALTER TABLE Aluno
-ADD CONSTRAINT UK_Email UNIQUE (Email) -- Voltar aqui
-GO
+ADD CONSTRAINT UQ_EmailAluno UNIQUE (Email) 
+GO --Uk_Email Alterado para UQ_EmailAluno 
 
 ALTER TABLE Aluno
-ADD CONSTRAINT UK_Celular UNIQUE (Celular) --Voltar aqui
-GO
+ADD CONSTRAINT UQ_CelularAluno UNIQUE (Celular) --Voltar aqui
+GO --Uk_Celular Alterado para UQ_CelularAluno
 
 --CREATE--
 --Professor--
@@ -110,16 +110,16 @@ ADD CONSTRAINT PK_Professor PRIMARY KEY (ID)
 GO
 
 ALTER TABLE Professor
-ADD CONSTRAINT FK_Id_usuarioProfessor FOREIGN KEY (Id_usuario) REFERENCES Usuario(ID)
+ADD CONSTRAINT FK_Id_UsuarioProfessor FOREIGN KEY (Id_usuario) REFERENCES Usuario(ID)
 GO
 
-ALTER TABLE Professor
-ADD CONSTRAINT UK_Email UNIQUE (Email) --Voltar aqui
-GO
+ALTER TABLE Professor 
+ADD CONSTRAINT UQ_EmailProfessor UNIQUE (Email) 
+GO --UK_Email alterado para UQ_EmailProfessor
 
 ALTER TABLE Professor
-ADD CONSTRAINT UK_Celular UNIQUE (Celular) --Voltar aqui
-GO
+ADD CONSTRAINT UQ_CelularProfessor UNIQUE (Celular) --Voltar aqui
+GO --UK_Celular alterado para UQ_CelularProfessor
 
 --CREATE--
 --Disciplina--
@@ -146,6 +146,10 @@ GO
 --Disciplina--
 ALTER TABLE Disciplina 
 ADD CONSTRAINT PK_Disciplina PRIMARY KEY(ID) 
+GO
+
+ALTER TABLE Disciplina 
+ADD CONSTRAINT UQ_NomeDisciplina UNIQUE(Nome)
 GO
 
 
