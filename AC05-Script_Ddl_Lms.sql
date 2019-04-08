@@ -157,7 +157,7 @@ ADD CONSTRAINT DF_DataDisciplina DEFAULT(GETDATE()) FOR Data
 GO
 
 ALTER TABLE Disciplina
-ADD CONSTRAINT CK_StatusDisciplina CHECK(Status in('Aberta','Fechada'))
+ADD CONSTRAINT CK_StatusDisciplina CHECK(STATUS in('Aberta','Fechada'))
 GO 
 
 
@@ -280,7 +280,7 @@ ADD CONSTRAINT FK_Aluno_SolicitacaoMatricula FOREIGN KEY(IdAluno) REFERENCES Alu
 GO
 
 ALTER TABLE SolicitacaoMatricula
-ADD CONSTRAINT FK_DisciplinaOfertada_SolicitacaoMatricula foreign key(IdDisciplinaOfertada)
+ADD CONSTRAINT FK_DisciplinaOfertada_SolicitacaoMatricula FOREIGN KEY(IdDisciplinaOfertada)
 REFERENCES DisciplinaOfertada(ID)
 GO  
 
@@ -298,8 +298,40 @@ ADD CONSTRAINT DF_Status_SolicitacaoMatricula DEFAULT('Solicidata') FOR Status
 GO 
 
 ALTER TABLE SolicitacaoMatricula
-ADD CONSTRAINT CK_Status_SolicitacaoMatricula CHECK(Status in('Solicitada','Aprovada'))
+ADD CONSTRAINT CK_Status_SolicitacaoMatricula CHECK(STATUS in('Solicitada','Aprovada'))
 GO
 
+--Create--
+--Atividade--
+CREATE TABLE Atividade 
+(
+Id INT IDENTITY(1,1) NOT NULL
+,Titulo VARCHAR(50) NOT NULL
+,Descricao VARCHAR(100) NULL
+,Conteudo VARCHAR(100)  NOT NULL
+,Tipo VARCHAR(20) NOT NULL
+,Extras VARCHAR(100) NULL
+,IdProfessor INT NOT NULL   
+)
+GO
+
+--Alter--
+--Atividade--
+ALTER TABLE Atividade
+ADD CONSTRAINT PK_Atividade PRIMARY KEY(ID)
+GO
+
+ALTER TABLE Atividade
+ADD CONSTRAINT UQ_Titulo_Atividade UNIQUE(Titulo)
+GO
+
+ALTER TABLE Atividade
+ADD CONSTRAINT CK_Tipo_Atividade CHECK(Tipo in('Resposta Aberta','Teste'))
+GO
+
+ALTER TABLE Atividade
+ADD CONSTRAINT FK_Professor_Atividade FOREIGN KEY(IdProfessor)
+REFERENCES Professor(ID)
+GO
 
  
