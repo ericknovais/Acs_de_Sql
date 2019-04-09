@@ -425,11 +425,46 @@ ALTER TABLE Entrega
 ADD CONSTRAINT CK_Note_Entrega CHECK(Nota in(0.00, 10.00))
 GO
 
+--Create--
+--Mensagem--
+CREATE TABLE Mensagem
+(
+ ID INT NOT NULL
+,IdAluno INT NOT NULL
+,IdProfessor INT NOT NULL
+,Assunto VARCHAR(100) NOT NULL
+,Referencia VARCHAR(100) NOT NULL
+,Conteudo VARCHAR(100) NOT NULL
+,Status VARCHAR(10) NOT NULL
+,DtEnvio DATE NOT NULL
+,DtResposta DATE NULL
+,Resposta VARCHAR(200) NULL 
+)
+GO 
+--Alter--
+--Mensagem--
+ALTER TABLE Mensagem
+ADD CONSTRAINT PK_Mensagem PRIMARY KEY(ID)
+GO
 
+ALTER TABLE Mensagem
+ADD CONSTRAINT FK_Aluno_Mensagem FOREIGN KEY(IdAluno)
+REFERENCES Aluno(ID)
+GO
 
+ALTER TABLE Mensagem
+ADD CONSTRAINT FK_Professor_Mensagem FOREIGN KEY(IdProfessor)
+REFERENCES Professor(ID)
+GO
 
+ALTER TABLE Mensagem
+ADD CONSTRAINT CK_Status_Mensagem CHECK(Status in ('Enviado', 'Lido', 'Respondido'))
+GO
 
-
---ALTER TABLE Entrega
---ADD CONSTRAINT DF_DtEnvio DEFAULT(GETDATE()) FOR DtEnvio
---GO
+ALTER TABLE Mensagem
+ADD CONSTRAINT DF_Status_Mensagem DEFAULT('Enviado') FOR Status
+GO
+ 
+ALTER TABLE Mensagem
+ADD CONSTRAINT DF_DtEnvio_Mensagem DEFAULT(GETDATE()) FOR DtEnvio
+GO
