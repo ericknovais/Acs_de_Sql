@@ -45,3 +45,37 @@ INSERT INTO Aluno (Id_usuario,Nome,Email,Celular,RA) VALUES (15,'Fabiano Velez',
 INSERT INTO Aluno (Id_usuario,Nome,Email,Celular,RA) VALUES (16,'Joana Carron','joana.carron@aluno.impacta.com.br', 1196043029, 1803133)
 
 SELECT * FROM Aluno
+
+-- Inserts Curso 
+INSERT INTO Curso (Nome) VALUES ('ADM')
+INSERT INTO Curso (Nome) VALUES ('CC')
+INSERT INTO Curso (Nome) VALUES ('EC')
+INSERT INTO Curso (Nome) VALUES ('SI')
+INSERT INTO Curso (Nome) VALUES ('ADS')
+INSERT INTO Curso (Nome) VALUES ('BD')
+INSERT INTO Curso (Nome) VALUES ('GTI')
+INSERT INTO Curso (Nome) VALUES ('JD')
+INSERT INTO Curso (Nome) VALUES ('PG')
+INSERT INTO Curso (Nome) VALUES ('PM')
+INSERT INTO Curso (Nome) VALUES ('RC')
+INSERT INTO Curso (Nome) VALUES ('ADS EAD')
+
+SELECT * FROM Curso
+
+-- Inserts Disciplina 
+DECLARE @PLANO_DE_ENSINO_URL AS VARCHAR(300)
+SET @PLANO_DE_ENSINO_URL = 'https://drive.google.com/file/d/11jDoAHgUPvBNggANlepTX_sPaPGgqiyP/view'
+
+INSERT INTO Disciplina (Nome,Data,Status,PlanoDeEnsino,CargaHoraria,Competencias,Habilidades,Ementa,ConteudoProgramatico,BibliografiaBasica,BibliografiaComplementar,PercentualPratico,PercentualTeorico,IdCoordenador)
+VALUES ('Linguagem SQL', GETDATE(), 'Aberta', @PLANO_DE_ENSINO_URL, 
+80, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, 
+@PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, 100, 00, 1)
+
+SET @PLANO_DE_ENSINO_URL = 'https://drive.google.com/file/d/1CI62y_nY7IqO2Pd8aWTH3Ye4ewR34e3T/view'
+
+INSERT INTO Disciplina (Nome,Data,Status,PlanoDeEnsino,CargaHoraria,Competencias,Habilidades,Ementa,ConteudoProgramatico,BibliografiaBasica,BibliografiaComplementar,PercentualPratico,PercentualTeorico,IdCoordenador)
+VALUES ('Ambiente de Desenvolvimento e Operação', GETDATE(), 'Aberta', @PLANO_DE_ENSINO_URL, 
+80, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL,
+@PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, 100, 00, 1)
+
+SELECT * FROM Disciplina
