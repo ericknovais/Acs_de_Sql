@@ -93,3 +93,7 @@ VALUES (1, CONVERT(DATE, '01/02/2018', 103), CONVERT(DATE, '24/05/2018', 103), 1
 @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL)
 
 SELECT * FROM DisciplinaOfertada
+
+-- Updates Disciplina Ofertada 
+UPDATE DisciplinaOFertada SET IdProfessor = 5 WHERE ID = 1
+UPDATE DisciplinaOFertada SET IdProfessor = 1 WHERE ID = 2
