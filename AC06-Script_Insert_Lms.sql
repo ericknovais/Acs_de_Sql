@@ -84,16 +84,20 @@ SELECT * FROM Disciplina
 DECLARE @PLANO_DE_ENSINO_URL AS VARCHAR(300)
 SET @PLANO_DE_ENSINO_URL = 'https://drive.google.com/file/d/11jDoAHgUPvBNggANlepTX_sPaPGgqiyP/view'
 
-INSERT INTO DisciplinaOFertada (IdCoordenador,DtInicialMatricula,DtFimMatricula,IdDisciplina,IdCurso,Ano,Semestre,Turma,IdProfessor,Metodologia,Recursos,CriterioAvaliacao,PlanoDeAulas)
-VALUES (1, CONVERT(DATE, '01/02/2018', 103), CONVERT(DATE, '24/05/2018', 103), 1, 4, 2018, '1', 'B', 2,
-@PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL)
+INSERT INTO DisciplinaOFertada (IdCoordenador,IdDisciplina,IdCurso,Ano,Semestre,Turma,IdProfessor,Metodologia,Recursos,CriterioAvaliacao,PlanoDeAulas)
+VALUES (1, 1, 4, 2018, '1', 'B', 2, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL)
 
-INSERT INTO DisciplinaOFertada (IdCoordenador,DtInicialMatricula,DtFimMatricula,IdDisciplina,IdCurso,Ano,Semestre,Turma,IdProfessor,Metodologia,Recursos,CriterioAvaliacao,PlanoDeAulas)
-VALUES (1, CONVERT(DATE, '01/02/2018', 103), CONVERT(DATE, '24/05/2018', 103), 1, 5, 2018, '1', 'B', 2,
-@PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL)
+INSERT INTO DisciplinaOFertada (IdCoordenador,IdDisciplina,IdCurso,Ano,Semestre,Turma,IdProfessor,Metodologia,Recursos,CriterioAvaliacao,PlanoDeAulas)
+VALUES (1, 1, 5, 2018, '1', 'B', 2, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL)
 
 SELECT * FROM DisciplinaOfertada
 
--- Updates Disciplina Ofertada 
+-- Updates Disciplina Ofertada - Atribuição de Professor e datas de matrícula inicial e final
 UPDATE DisciplinaOFertada SET IdProfessor = 5 WHERE ID = 1
 UPDATE DisciplinaOFertada SET IdProfessor = 1 WHERE ID = 2
+UPDATE DisciplinaOFertada 
+SET DtInicialMatricula = CONVERT(DATE, '01/02/2018', 103), DtFimMatricula = CONVERT(DATE, '24/05/2018', 103) 
+WHERE ID = 1
+UPDATE DisciplinaOFertada 
+SET DtInicialMatricula = CONVERT(DATE, '02/02/2018', 103), DtFimMatricula = CONVERT(DATE, '25/05/2018', 103) 
+WHERE ID = 2
