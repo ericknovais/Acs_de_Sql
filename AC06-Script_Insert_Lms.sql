@@ -79,3 +79,17 @@ VALUES ('Ambiente de Desenvolvimento e Operação', GETDATE(), 'Aberta', @PLANO_DE
 @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, 100, 00, 1)
 
 SELECT * FROM Disciplina
+
+-- Inserts Disciplina Ofertada
+DECLARE @PLANO_DE_ENSINO_URL AS VARCHAR(300)
+SET @PLANO_DE_ENSINO_URL = 'https://drive.google.com/file/d/11jDoAHgUPvBNggANlepTX_sPaPGgqiyP/view'
+
+INSERT INTO DisciplinaOFertada (IdCoordenador,DtInicialMatricula,DtFimMatricula,IdDisciplina,IdCurso,Ano,Semestre,Turma,IdProfessor,Metodologia,Recursos,CriterioAvaliacao,PlanoDeAulas)
+VALUES (1, CONVERT(DATE, '01/02/2018', 103), CONVERT(DATE, '24/05/2018', 103), 1, 4, 2018, '1', 'B', 2,
+@PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL)
+
+INSERT INTO DisciplinaOFertada (IdCoordenador,DtInicialMatricula,DtFimMatricula,IdDisciplina,IdCurso,Ano,Semestre,Turma,IdProfessor,Metodologia,Recursos,CriterioAvaliacao,PlanoDeAulas)
+VALUES (1, CONVERT(DATE, '01/02/2018', 103), CONVERT(DATE, '24/05/2018', 103), 1, 5, 2018, '1', 'B', 2,
+@PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL)
+
+SELECT * FROM DisciplinaOfertada
