@@ -71,10 +71,10 @@ VALUES ('Linguagem SQL', GETDATE(), 'Aberta', @PLANO_DE_ENSINO_URL,
 80, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, 
 @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, 100, 00, 1)
 
-SET @PLANO_DE_ENSINO_URL = 'https://drive.google.com/file/d/1CI62y_nY7IqO2Pd8aWTH3Ye4ewR34e3T/view'
+SET @PLANO_DE_ENSINO_URL = 'https://docs.google.com/document/d/1QyCpDkeAL21iWp47wpDxEErfRrX_Cil31dCtCajYkF4/edit'
 
 INSERT INTO Disciplina (Nome,Data,Status,PlanoDeEnsino,CargaHoraria,Competencias,Habilidades,Ementa,ConteudoProgramatico,BibliografiaBasica,BibliografiaComplementar,PercentualPratico,PercentualTeorico,IdCoordenador)
-VALUES ('Ambiente de Desenvolvimento e Operação', GETDATE(), 'Aberta', @PLANO_DE_ENSINO_URL, 
+VALUES ('Tecnologias Web', GETDATE(), 'Aberta', @PLANO_DE_ENSINO_URL, 
 80, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL,
 @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, 100, 00, 1)
 
