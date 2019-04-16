@@ -88,7 +88,7 @@ INSERT INTO DisciplinaOFertada (IdCoordenador,IdDisciplina,IdCurso,Ano,Semestre,
 VALUES (1, 1, 4, 2018, '1', 'B', 2, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL)
 
 INSERT INTO DisciplinaOFertada (IdCoordenador,IdDisciplina,IdCurso,Ano,Semestre,Turma,IdProfessor,Metodologia,Recursos,CriterioAvaliacao,PlanoDeAulas)
-VALUES (1, 1, 5, 2018, '1', 'B', 2, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL)
+VALUES (1, 1, 5, 2018, '1', 'B', 1, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL)
 
 SELECT * FROM DisciplinaOfertada
 
@@ -144,3 +144,9 @@ INSERT INTO Atividade(Titulo, Conteudo, Tipo, IdProfessor)
 VALUES('Formulario', ' Formulário sobre HTTP, URL e Cliente x Servidor','Teste',1) 
 
 Select * from Atividade
+
+--AtividadeVinculada
+INSERT INTO AtividadeVinculada(IdAtividade, IdProfessor, IdDisciplinaOfertada,Rotulo, Status, DtInicioRespostas, DtFimRespostas)
+VALUES(1, 2, 1, 'AC01', 'Disponibilizada', '20/02/2018', '27/02/2018')
+
+select * from AtividadeVinculada  
