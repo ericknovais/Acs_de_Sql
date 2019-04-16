@@ -88,7 +88,7 @@ INSERT INTO DisciplinaOFertada (IdCoordenador,IdDisciplina,IdCurso,Ano,Semestre,
 VALUES (1, 1, 4, 2018, '1', 'B', 2, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL)
 
 INSERT INTO DisciplinaOFertada (IdCoordenador,IdDisciplina,IdCurso,Ano,Semestre,Turma,IdProfessor,Metodologia,Recursos,CriterioAvaliacao,PlanoDeAulas)
-VALUES (1, 1, 5, 2018, '1', 'B', 2, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL)
+VALUES (1, 1, 5, 2018, '1', 'B', 1, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL)
 
 SELECT * FROM DisciplinaOfertada
 
@@ -109,7 +109,7 @@ ALTER TABLE SolicitacaoMatricula
 ADD CONSTRAINT DF_Status_SolicitacaoMatricula DEFAULT('Solicitada') FOR Status
 GO 
 
--- Primeira DisciplinaOfertada
+-- Primeira SolicitacaoMatricula
 INSERT INTO SolicitacaoMatricula(IdAluno, IdDisciplinaOfertada, DtSolicitacao, IdCoordenador)
 VALUES(1, 1, '02/01/2018', 1) 
 INSERT INTO SolicitacaoMatricula(IdAluno, IdDisciplinaOfertada, DtSolicitacao, IdCoordenador)
@@ -117,7 +117,7 @@ VALUES(2, 1, '05/01/2018', 1)
 INSERT INTO SolicitacaoMatricula(IdAluno, IdDisciplinaOfertada, DtSolicitacao, IdCoordenador)
 VALUES(3, 1, '10/01/2018', 1)
     
--- Segunda DisciplinaOfertada
+-- Segunda SolicitacaoMatricula
 INSERT INTO SolicitacaoMatricula(IdAluno, IdDisciplinaOfertada, DtSolicitacao, IdCoordenador)
 VALUES(4,  2, '03/01/2018', 1) 
 INSERT INTO SolicitacaoMatricula(IdAluno, IdDisciplinaOfertada, DtSolicitacao, IdCoordenador)
@@ -126,3 +126,27 @@ INSERT INTO SolicitacaoMatricula(IdAluno, IdDisciplinaOfertada, DtSolicitacao, I
 VALUES(10, 2,'09/01/2018', 1)
 
 select * from SolicitacaoMatricula
+
+--Update SolicitacaoMatricula
+UPDATE SolicitacaoMatricula
+SET Status = 'Aprovada' WHERE IdAluno = 2  
+UPDATE SolicitacaoMatricula
+SET Status = 'Aprovada' WHERE IdAluno = 10  
+UPDATE SolicitacaoMatricula
+SET Status = 'Aprovada' WHERE IdAluno = 7  
+UPDATE SolicitacaoMatricula
+SET Status = 'Aprovada' WHERE IdAluno = 3  
+
+INSERT INTO Atividade(Titulo, Conteudo, Tipo, IdProfessor)
+VALUES('Modelagem', 'Fazer um modelo relacional','Teste',2) 
+
+INSERT INTO Atividade(Titulo, Conteudo, Tipo, IdProfessor)
+VALUES('Formulario', ' Formulário sobre HTTP, URL e Cliente x Servidor','Teste',1) 
+
+Select * from Atividade
+
+--AtividadeVinculada
+INSERT INTO AtividadeVinculada(IdAtividade, IdProfessor, IdDisciplinaOfertada,Rotulo, Status, DtInicioRespostas, DtFimRespostas)
+VALUES(1, 2, 1, 'AC01', 'Disponibilizada', '20/02/2018', '27/02/2018')
+
+select * from AtividadeVinculada  
