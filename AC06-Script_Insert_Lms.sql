@@ -109,7 +109,7 @@ ALTER TABLE SolicitacaoMatricula
 ADD CONSTRAINT DF_Status_SolicitacaoMatricula DEFAULT('Solicitada') FOR Status
 GO 
 
--- Primeira DisciplinaOfertada
+-- Primeira SolicitacaoMatricula
 INSERT INTO SolicitacaoMatricula(IdAluno, IdDisciplinaOfertada, DtSolicitacao, IdCoordenador)
 VALUES(1, 1, '02/01/2018', 1) 
 INSERT INTO SolicitacaoMatricula(IdAluno, IdDisciplinaOfertada, DtSolicitacao, IdCoordenador)
@@ -117,7 +117,7 @@ VALUES(2, 1, '05/01/2018', 1)
 INSERT INTO SolicitacaoMatricula(IdAluno, IdDisciplinaOfertada, DtSolicitacao, IdCoordenador)
 VALUES(3, 1, '10/01/2018', 1)
     
--- Segunda DisciplinaOfertada
+-- Segunda SolicitacaoMatricula
 INSERT INTO SolicitacaoMatricula(IdAluno, IdDisciplinaOfertada, DtSolicitacao, IdCoordenador)
 VALUES(4,  2, '03/01/2018', 1) 
 INSERT INTO SolicitacaoMatricula(IdAluno, IdDisciplinaOfertada, DtSolicitacao, IdCoordenador)
@@ -126,3 +126,5 @@ INSERT INTO SolicitacaoMatricula(IdAluno, IdDisciplinaOfertada, DtSolicitacao, I
 VALUES(10, 2,'09/01/2018', 1)
 
 select * from SolicitacaoMatricula
+
+--Update SolicitacaoMatricula
