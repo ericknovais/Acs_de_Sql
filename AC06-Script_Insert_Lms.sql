@@ -128,3 +128,11 @@ VALUES(10, 2,'09/01/2018', 1)
 select * from SolicitacaoMatricula
 
 --Update SolicitacaoMatricula
+UPDATE SolicitacaoMatricula
+SET Status = 'Aprovada' WHERE IdAluno = 2  
+UPDATE SolicitacaoMatricula
+SET Status = 'Aprovada' WHERE IdAluno = 10  
+UPDATE SolicitacaoMatricula
+SET Status = 'Aprovada' WHERE IdAluno = 7  
+UPDATE SolicitacaoMatricula
+SET Status = 'Aprovada' WHERE IdAluno = 3  
