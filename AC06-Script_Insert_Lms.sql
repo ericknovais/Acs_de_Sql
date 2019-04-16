@@ -136,3 +136,11 @@ UPDATE SolicitacaoMatricula
 SET Status = 'Aprovada' WHERE IdAluno = 7  
 UPDATE SolicitacaoMatricula
 SET Status = 'Aprovada' WHERE IdAluno = 3  
+
+INSERT INTO Atividade(Titulo, Conteudo, Tipo, IdProfessor)
+VALUES('Modelagem', 'Fazer um modelo relacional','Teste',2) 
+
+INSERT INTO Atividade(Titulo, Conteudo, Tipo, IdProfessor)
+VALUES('Formulario', ' Formulário sobre HTTP, URL e Cliente x Servidor','Teste',1) 
+
+Select * from Atividade
