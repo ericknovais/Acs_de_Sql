@@ -101,3 +101,28 @@ WHERE ID = 1
 UPDATE DisciplinaOFertada 
 SET DtInicialMatricula = CONVERT(DATE, '02/02/2018', 103), DtFimMatricula = CONVERT(DATE, '25/05/2018', 103) 
 WHERE ID = 2
+
+-- Alteração do Script
+ALTER TABLE SolicitacaoMatricula DROP CONSTRAINT DF_Status_SolicitacaoMatricula
+
+ALTER TABLE SolicitacaoMatricula
+ADD CONSTRAINT DF_Status_SolicitacaoMatricula DEFAULT('Solicitada') FOR Status
+GO 
+
+-- Primeira DisciplinaOfertada
+INSERT INTO SolicitacaoMatricula(IdAluno, IdDisciplinaOfertada, DtSolicitacao, IdCoordenador)
+VALUES(1, 1, '02/01/2018', 1) 
+INSERT INTO SolicitacaoMatricula(IdAluno, IdDisciplinaOfertada, DtSolicitacao, IdCoordenador)
+VALUES(2, 1, '05/01/2018', 1)
+INSERT INTO SolicitacaoMatricula(IdAluno, IdDisciplinaOfertada, DtSolicitacao, IdCoordenador)
+VALUES(3, 1, '10/01/2018', 1)
+    
+-- Segunda DisciplinaOfertada
+INSERT INTO SolicitacaoMatricula(IdAluno, IdDisciplinaOfertada, DtSolicitacao, IdCoordenador)
+VALUES(4,  2, '03/01/2018', 1) 
+INSERT INTO SolicitacaoMatricula(IdAluno, IdDisciplinaOfertada, DtSolicitacao, IdCoordenador)
+VALUES(7,  2, '07/01/2018', 1)
+INSERT INTO SolicitacaoMatricula(IdAluno, IdDisciplinaOfertada, DtSolicitacao, IdCoordenador)
+VALUES(10, 2,'09/01/2018', 1)
+
+select * from SolicitacaoMatricula
