@@ -58,3 +58,6 @@ FROM Professor
 SELECT PRF.Apelido [Nome professor] ,CDN.Nome [Nome Coordenador] FROM DisciplinaOFertada DPO
 JOIN Coordenador CDN ON DPO.IdCoordenador = CDN.ID
 JOIN Professor PRF ON DPO.IdProfessor = PRF.ID    
+
+-- 10 Numeros de celular alunos --
+SELECT Celular FROM Aluno WHERE Celular LIKE '%99'
