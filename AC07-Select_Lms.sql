@@ -61,3 +61,8 @@ JOIN Professor PRF ON DPO.IdProfessor = PRF.ID
 
 -- 10 Numeros de celular alunos --
 SELECT Celular FROM Aluno WHERE Celular LIKE '%99'
+
+-- 11 Logins de id par, mas não multiplos por 3 --
+SELECT * FROM Usuario 
+WHERE (ID % 2) = 0 AND NOT (ID % 3) = 0
+
