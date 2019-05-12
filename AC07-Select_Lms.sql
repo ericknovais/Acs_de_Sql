@@ -54,9 +54,7 @@ Apelido
 [Emails Professores ]
 FROM Professor 
 
-
-
-
-
-
-
+-- 9 Nomes professores e coordenador --
+SELECT PRF.Apelido [Nome professor] ,CDN.Nome [Nome Coordenador] FROM DisciplinaOFertada DPO
+JOIN Coordenador CDN ON DPO.IdCoordenador = CDN.ID
+JOIN Professor PRF ON DPO.IdProfessor = PRF.ID    
