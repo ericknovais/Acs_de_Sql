@@ -35,12 +35,16 @@ AND IdProfessor = 2
 SELECT * FROM DisciplinaOFertada 
 WHERE IdProfessor IS NULL 
 
---6 Login --
+-- 6 Login --
 SELECT USU.Login,USU.Senha,ALU.Nome,ALU.Email FROM Usuario USU
 JOIN Aluno ALU ON USU.ID = ALU.Id_usuario
 WHERE USU.DtExpiracao < GETDATE() 
 
-
+-- 7 Nomes Diciplinas --
+SELECT Nome FROM Disciplina
+WHERE CargaHoraria = 80 
+ORDER BY Data DESC 
+ 
 
 
 
