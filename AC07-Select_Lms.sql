@@ -16,7 +16,17 @@ WHERE DPO.DtInicialMatricula >= GETDATE()
 AND  DPO.DtFimMatricula <= GETDATE()
 GO
 
--- 3 Trabalhos não entregues -- 
+-- 3 Trabalhos não entregues --
+SELECT ENT.Status, ALN.Nome, DIP.Nome FROM DisciplinaOFertada DPO
+JOIN Disciplina DIP ON DIP.ID = DPO.IdDisciplina 
+JOIN SolicitacaoMatricula STM ON STM.IdDisciplinaOfertada = DPO.ID
+JOIN Aluno ALN ON ALN.ID = STM.IdAluno
+LEFT JOIN Entrega ENT ON ENT.IdAluno = ALN.ID
+LEFT JOIN AtividadeVinculada AVI ON AVI.ID = ENT.IdAtividadeVinculada
+LEFT JOIN Atividade ATV ON ATV.Id = AVI.IdAtividade
+GO      
+
+
 
 
 
