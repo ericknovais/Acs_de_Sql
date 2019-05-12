@@ -432,7 +432,7 @@ Alter table ENTREGA drop CK_Note_Entrega
 --Mensagem--
 CREATE TABLE Mensagem
 (
- ID INT NOT NULL
+ ID INT NOT NULL IDENTITY(1,1)
 ,IdAluno INT NOT NULL
 ,IdProfessor INT NOT NULL
 ,Assunto VARCHAR(100) NOT NULL

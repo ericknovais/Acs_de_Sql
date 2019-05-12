@@ -84,7 +84,7 @@ VALUES ('Tecnologias Web', GETDATE(), 'Aberta', @PLANO_DE_ENSINO_URL,
 SELECT * FROM Disciplina
 
 -- Inserts Disciplina Ofertada
-DECLARE @PLANO_DE_ENSINO_URL AS VARCHAR(300)
+--DECLARE @PLANO_DE_ENSINO_URL AS VARCHAR(300)
 SET @PLANO_DE_ENSINO_URL = 'https://drive.google.com/file/d/11jDoAHgUPvBNggANlepTX_sPaPGgqiyP/view'
 
 INSERT INTO DisciplinaOFertada (IdCoordenador,IdDisciplina,IdCurso,Ano,Semestre,Turma,IdProfessor,Metodologia,Recursos,CriterioAvaliacao,PlanoDeAulas)
@@ -159,10 +159,21 @@ VALUES(1, 2, 1, 'AC01', 'Disponibilizada', '20180210', '20180227')
 INSERT INTO AtividadeVinculada(IdAtividade, IdProfessor, IdDisciplinaOfertada,Rotulo, Status, DtInicioRespostas, DtFimRespostas)
 VALUES(2, 1, 2, 'AC01', 'Disponibilizada', '20180210', '20180227')
 
-select * from Entrega
-
 INSERT INTO Entrega (IdAluno, IdAtividadeVinculada, Titulo, Resposta,IdProfessor)
 VALUES(1, 1, 'Modelagem','Foi feito a modelagem do banco de dados de forma relacional',2) 
 GO
 INSERT INTO Entrega (IdAluno, IdAtividadeVinculada, Titulo, Resposta,IdProfessor)
 VALUES(2, 1, 'Modelagem','Foi feito a modelagem do banco de dados de forma relacional',2) 
+
+UPDATE Entrega SET Nota= 7 WHERE IdAluno = 2
+
+select * from Entrega
+
+INSERT INTO Mensagem( IdAluno, IdProfessor, Assunto, Referencia, Conteudo)
+VALUES(2, 1, 'Duvida', 'AC06', 'Qual a data de entrega da AC6 ?')  
+
+UPDATE Mensagem SET Status ='Respondido', DtResposta = GETDATE(), 
+Resposta = 'A data de entrega da AC6 é na próxima semana'
+WHERE ID = 1 
+
+Select * from Mensagem
