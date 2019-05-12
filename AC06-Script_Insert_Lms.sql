@@ -165,7 +165,7 @@ GO
 INSERT INTO Entrega (IdAluno, IdAtividadeVinculada, Titulo, Resposta,IdProfessor)
 VALUES(2, 1, 'Modelagem','Foi feito a modelagem do banco de dados de forma relacional',2) 
 
-UPDATE Entrega SET Nota= 7 WHERE IdAluno = 2
+UPDATE Entrega SET Nota= 7, Status = 'Corrigido' WHERE IdAluno = 2
 
 select * from Entrega
 
