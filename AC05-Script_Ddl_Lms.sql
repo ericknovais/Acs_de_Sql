@@ -298,7 +298,7 @@ ADD CONSTRAINT DF_Status_SolicitacaoMatricula DEFAULT('Solicidata') FOR Status
 GO 
 
 ALTER TABLE SolicitacaoMatricula
-ADD CONSTRAINT CK_Status_SolicitacaoMatricula CHECK(STATUS in('Solicitada','Aprovada'))
+ADD CONSTRAINT CK_Status_SolicitacaoMatricula CHECK(STATUS in('Solicitada','Aprovada','Rejeitada','Cancelada'))
 GO
 
 --Create--

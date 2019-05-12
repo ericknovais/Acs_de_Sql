@@ -138,7 +138,14 @@ SET Status = 'Aprovada' WHERE IdAluno = 10
 UPDATE SolicitacaoMatricula
 SET Status = 'Aprovada' WHERE IdAluno = 7  
 UPDATE SolicitacaoMatricula
-SET Status = 'Aprovada' WHERE IdAluno = 3  
+SET Status = 'Aprovada' WHERE IdAluno = 3 
+UPDATE SolicitacaoMatricula
+SET Status = 'Rejeitada' WHERE IdAluno = 1
+UPDATE SolicitacaoMatricula
+SET Status = 'Rejeitada' WHERE IdAluno = 4 
+ 
+
+ 
 
 INSERT INTO Atividade(Titulo, Conteudo, Tipo, IdProfessor)
 VALUES('Modelagem', 'Fazer um modelo relacional','Teste',2) 
@@ -150,6 +157,6 @@ Select * from Atividade
 
 --AtividadeVinculada
 INSERT INTO AtividadeVinculada(IdAtividade, IdProfessor, IdDisciplinaOfertada,Rotulo, Status, DtInicioRespostas, DtFimRespostas)
-VALUES(1, 2, 1, 'AC01', 'Disponibilizada', '20/02/2018', '27/02/2018')
+VALUES(1, 2, 1, 'AC01', 'Disponibilizada', '20180210', '20180227')
 
 select * from AtividadeVinculada  
