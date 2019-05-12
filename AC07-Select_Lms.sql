@@ -33,7 +33,15 @@ AND IdProfessor = 2
 
 -- 5 Disciplina ofertada sem professor -- 
 SELECT * FROM DisciplinaOFertada 
-WHERE IdProfessor IS NULL AND IdCoordenador = 1 
+WHERE IdProfessor IS NULL 
+
+--6 Login --
+SELECT USU.Login,USU.Senha,ALU.Nome,ALU.Email FROM Usuario USU
+JOIN Aluno ALU ON USU.ID = ALU.Id_usuario
+WHERE USU.DtExpiracao < GETDATE() 
+
+
+
 
 
 
