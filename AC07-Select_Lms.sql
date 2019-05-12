@@ -66,3 +66,11 @@ SELECT Celular FROM Aluno WHERE Celular LIKE '%99'
 SELECT * FROM Usuario 
 WHERE (ID % 2) = 0 AND NOT (ID % 3) = 0
 
+-- 12 Nome das Disciplinas --
+SELECT DPN.Nome FROM DisciplinaOFertada DPO
+JOIN Disciplina DPN ON DPN.ID = DPO.IdDisciplina
+JOIN Professor PRF ON PRF.ID = DPO.IdProfessor   
+WHERE (Turma ='A' OR Turma ='B') 
+AND Ano = 2018 
+AND (Semestre = 1 OR Semestre = 2)
+AND PRF.Email <> 'adasmastor@faculdadeimpacta.com.br'   
