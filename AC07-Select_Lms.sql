@@ -44,7 +44,16 @@ WHERE USU.DtExpiracao < GETDATE()
 SELECT Nome FROM Disciplina
 WHERE CargaHoraria = 80 
 ORDER BY Data DESC 
- 
+
+-- 8 E-mais professores --
+SELECT 
+Email 
++ '( ' + 
+Apelido 
++ ' )'
+[Emails Professores ]
+FROM Professor 
+
 
 
 
