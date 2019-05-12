@@ -95,8 +95,10 @@ VALUES (1, 2, 5, 2018, '1', 'B', 1, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, 
 
 SELECT * FROM DisciplinaOfertada
 
+select * from Professor
+
 -- Updates Disciplina Ofertada - Atribuição de Professor e datas de matrícula inicial e final
-UPDATE DisciplinaOFertada SET IdProfessor = 5 WHERE ID = 1
+UPDATE DisciplinaOFertada SET IdProfessor = 2 WHERE ID = 1
 UPDATE DisciplinaOFertada SET IdProfessor = 1 WHERE ID = 2
 UPDATE DisciplinaOFertada 
 SET DtInicialMatricula = CONVERT(DATE, '01/02/2018', 103), DtFimMatricula = CONVERT(DATE, '24/05/2018', 103) 
