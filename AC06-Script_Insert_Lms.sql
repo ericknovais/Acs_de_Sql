@@ -1,3 +1,6 @@
+USE LMS_DB
+GO
+
 -- Inserts Usuário
 INSERT INTO Usuario (Login, Senha) VALUES(7656,'kose12')
 INSERT INTO Usuario (Login, Senha) VALUES(4543,'msdfd13')
@@ -88,7 +91,7 @@ INSERT INTO DisciplinaOFertada (IdCoordenador,IdDisciplina,IdCurso,Ano,Semestre,
 VALUES (1, 1, 4, 2018, '1', 'B', 2, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL)
 
 INSERT INTO DisciplinaOFertada (IdCoordenador,IdDisciplina,IdCurso,Ano,Semestre,Turma,IdProfessor,Metodologia,Recursos,CriterioAvaliacao,PlanoDeAulas)
-VALUES (1, 1, 5, 2018, '1', 'B', 1, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL)
+VALUES (1, 2, 5, 2018, '1', 'B', 1, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL, @PLANO_DE_ENSINO_URL)
 
 SELECT * FROM DisciplinaOfertada
 
