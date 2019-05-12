@@ -144,9 +144,6 @@ SET Status = 'Rejeitada' WHERE IdAluno = 1
 UPDATE SolicitacaoMatricula
 SET Status = 'Rejeitada' WHERE IdAluno = 4 
  
-
- 
-
 INSERT INTO Atividade(Titulo, Conteudo, Tipo, IdProfessor)
 VALUES('Modelagem', 'Fazer um modelo relacional','Teste',2) 
 
@@ -159,4 +156,13 @@ Select * from Atividade
 INSERT INTO AtividadeVinculada(IdAtividade, IdProfessor, IdDisciplinaOfertada,Rotulo, Status, DtInicioRespostas, DtFimRespostas)
 VALUES(1, 2, 1, 'AC01', 'Disponibilizada', '20180210', '20180227')
 
-select * from AtividadeVinculada  
+INSERT INTO AtividadeVinculada(IdAtividade, IdProfessor, IdDisciplinaOfertada,Rotulo, Status, DtInicioRespostas, DtFimRespostas)
+VALUES(2, 1, 2, 'AC01', 'Disponibilizada', '20180210', '20180227')
+
+select * from Entrega
+
+INSERT INTO Entrega (IdAluno, IdAtividadeVinculada, Titulo, Resposta,IdProfessor)
+VALUES(1, 1, 'Modelagem','Foi feito a modelagem do banco de dados de forma relacional',2) 
+GO
+INSERT INTO Entrega (IdAluno, IdAtividadeVinculada, Titulo, Resposta,IdProfessor)
+VALUES(2, 1, 'Modelagem','Foi feito a modelagem do banco de dados de forma relacional',2) 

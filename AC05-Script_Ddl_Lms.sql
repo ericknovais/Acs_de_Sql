@@ -421,9 +421,12 @@ ADD CONSTRAINT FK_Professor_Entrega FOREIGN KEY(IdProfessor)
 REFERENCES Professor(ID)
 GO
 
+--Alteardo por causa da AC07 
 ALTER TABLE Entrega
-ADD CONSTRAINT CK_Note_Entrega CHECK(Nota in(0.00, 10.00))
+ADD CONSTRAINT CK_Note_Entrega CHECK(Nota >= 0 OR 10 <= NOTA)
 GO
+
+Alter table ENTREGA drop CK_Note_Entrega
 
 --Create--
 --Mensagem--
