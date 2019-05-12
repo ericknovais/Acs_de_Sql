@@ -31,6 +31,11 @@ SELECT * FROM Entrega
 WHERE Nota IS NULL AND Status <> 'Corrigido' 
 AND IdProfessor = 2     
 
+-- 5 Disciplina ofertada sem professor -- 
+SELECT * FROM DisciplinaOFertada 
+WHERE IdProfessor IS NULL AND IdCoordenador = 1 
+
+
 
 
 
