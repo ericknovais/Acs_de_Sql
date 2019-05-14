@@ -24,7 +24,12 @@ SELECT * from Clientes where Telefone like '9%'
 
 -- Avancado --
 -- 1 --
-SELECT TOP(10) Livro FROM Emprestimos
+SELECT TOP 10 LIV.Nome,
+COUNT(LIV.status) QTD
+FROM Livros LIV 
+JOIN Emprestimos EMP
+on LIV.Nome = EMP.Livro and LIV.Copia = EMP.Copia
+group by LIV.Nome,LIV.Status
 GO
 -- 2 -- 
 SELECT  CLI.Nome
@@ -32,10 +37,11 @@ SELECT  CLI.Nome
 ,(SELECT SUM(Multa) FROM Emprestimos) [Valor Total] 
 FROM Emprestimos EMP
 JOIN Clientes CLI ON CLI.Id_Cliente = EMP.ID_Cliente
-WHERE EMP.Multa   IS NOT NULL   
+WHERE EMP.Multa IS NOT NULL   
 GO
 -- 3 -- 
-SELECT LIV.Nome FROM Emprestimos EMP
-RIGHT JOIN Livros LIV ON EMP.Livro = LIV.Nome AND EMP.Copia = LIV.Copia 
-where EMP.ID IS NULL   
+SELECT Nome FROM Livros 
+WHERE Nome NOT IN(SELECT Livro FROM Emprestimos 
+				  WHERE YEAR(DataEmprestimo) = YEAR('2018')) 
+GO
  
